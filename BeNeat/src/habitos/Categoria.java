@@ -22,6 +22,9 @@ public class Categoria {
 			this.descripcion=null;
 			this.color=null;
 		}
+		public Categoria() {
+			
+		}
 		
 	//metodos get
 		public String getNombre() {

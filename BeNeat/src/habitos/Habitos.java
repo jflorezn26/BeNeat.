@@ -192,4 +192,3 @@ public class Habitos {
 	public void setCategoria(Categoria cateR) {
 		categoria=cateR;}
 }
-
