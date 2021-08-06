@@ -4,7 +4,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import javax.swing.JOptionPane;
+
 
 public class Calendario {
 	private BufferedReader lector;
@@ -26,8 +26,8 @@ public class Calendario {
 			System.out.println();
 			lector.close();// cerramos la variable lector para que no se use mas
 			linea = null;// colocamos linea = null para indicar que se finalizo el trapaso de la informacion del archivo a la matrizAgo
-			}catch(Exception e) {  // esto es en caso de que ocurra un error en los pasos anteriores
-			JOptionPane.showMessageDialog(null, e); // nos muestra este mensaje en caso de error
+			}catch(IOException e) {  // esto es en caso de que ocurra un error en los pasos anteriores
+			System.out.println("Error E/S: "+e); // nos muestra este mensaje en caso de error
 		}
 		
 	}
