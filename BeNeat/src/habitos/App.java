@@ -1,4 +1,4 @@
-package org.edu.unal.pc.clases;
+package habitos;
 
 public class App {
     public static void main(String[] args) {

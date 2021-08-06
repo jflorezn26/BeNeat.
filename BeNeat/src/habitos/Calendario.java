@@ -1,4 +1,4 @@
-package org.edu.unal.pc.clases;
+package habitos;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -15,7 +15,7 @@ public class Calendario {
 
 	public void leercsv(String nomarchivo) {
 		try {
-			lector = new BufferedReader(new FileReader("C:\\Users\\Carolina\\Documents\\Mesagosto1.csv"));// la variable lector con la libreria bufferedReader lee el archivo 
+			lector = new BufferedReader(new FileReader("d:\\ESCRITORIO\\JEISSON\\programacion.csv"));// la variable lector con la libreria bufferedReader lee el archivo 
 			int j = 0;                                              // la variable j es para llenar la matriz de agosto y j representa las filas de la matrizago
 			while ((linea = lector.readLine()) != null) {  // este ciclo nos crea una nueva linea llamada linea que es igual a lector.readLine, lector.readLine lee toda la linea del alchivo csv
 				partes = linea.split(";");                 // la funcion split separa todo el String que leyo del archivo y lo separa por cada ; convirtiendo el String leido del archivo en una arreglo llamado partes
