@@ -16,7 +16,7 @@ public class Calendario {
 
 	public void leercsv(String nomarchivo) {
 		try {
-			lector = new BufferedReader(new FileReader("C:\\Users\\Carolina\\Documents\\Mesagosto1.csv"));// la variable lector con la libreria bufferedReader lee el archivo 
+			lector = new BufferedReader(new FileReader(nomarchivo));// la variable lector con la libreria bufferedReader lee el archivo 
 			int j = 0;                                              // la variable j es para llenar la matriz de agosto y j representa las filas de la matrizago
 			while ((linea = lector.readLine()) != null) {  // este ciclo nos crea una nueva linea llamada linea que es igual a lector.readLine, lector.readLine lee toda la linea del alchivo csv
 				partes = linea.split(";");                 // la funcion split separa todo el String que leyo del archivo y lo separa por cada ; convirtiendo el String leido del archivo en una arreglo llamado partes
@@ -28,7 +28,7 @@ public class Calendario {
 			lector.close();// cerramos la variable lector para que no se use mas
 			linea = null;// colocamos linea = null para indicar que se finalizo el trapaso de la informacion del archivo a la matrizAgo
 			}catch(IOException e) {  // esto es en caso de que ocurra un error en los pasos anteriores
-			System.out.println("Error E/S: "+e); // nos muestra este mensaje en caso de error
+	            System.out.println("Error E/S: "+e); // nos muestra este mensaje en caso de error
 		}
 		
 	}
@@ -46,8 +46,12 @@ public class Calendario {
 	public void agregarhabi(String nump,String yt) {// este metodo es para agregar el habito que el usuario ingrese, acepta dos argumento un String que es el numero del dia en el que quiere ingresar el habito y otro es el habito num es el dia, yt es el habito
 		for(int tr =0;tr<matrizago.length;tr++) { // ciclos for para buscar en todas las casillas cual tiene el dia que el usuario ingreso
 			for(int ew =0; ew<matrizago[tr].length;ew++) {
-				if(matrizago[tr][ew].equals(nump)) { // condicional el cual nos dice que si el valor de la casilla de la variable es igual al dia entonces
-					matrizago[tr][ew]+=yt;                   // se cambia el valor de la variable con el numero de la fila donde esta el dia
+				String par [] = matrizago[tr][ew].split(" ");//separamos lo que hay en la casilla para poder comparar con el dia del mes
+				
+				if(par[0].equals(nump)) { //al ya separar lo que habia en la casilla usamos lo que esta en la primera posiscion para ayudarnos a comparar el dia ingreso el usuario
+					
+					matrizago[tr][ew]+=" ";// agregamos un espacio para que no este pegado todo en la casilla
+					matrizago[tr][ew]+=(yt);                   // se cambia el valor de la variable con el numero de la fila donde esta el dia
 					                  // se cambia el valor de la variable con el numero de la columna donde esta el dia
 				}
 			}
@@ -57,7 +61,8 @@ public class Calendario {
 	public void imprima() {        // metodo para imprimir la matrizago para saber que contiene esta
 		for(int qe =0;qe<matrizago.length;qe++) { // ciclos for para las distintas posiciones de las filas y columnas
 			for(int qr=0;qr<matrizago[qe].length;qr++) {
-				System.out.print(matrizago[qe][qr]); // imprimir el valor de la matriz
+				System.out.print(matrizago[qe][qr]+"\t");
+				                                      // imprimir el valor de la matriz
 			}
 			System.out.print("\n");	 // indicar que cambiamos de linea
 		}	
