@@ -14,6 +14,10 @@ public class Habitos {
 	
 	Categoria categoria;
 	
+	public Habitos() {		
+		categoria = new Categoria();
+	}
+	
 //metodo constructor
 	public Habitos (String nom,String desc,Date fInicio, Date fFin, int rach, int[] diasSem, long hor, Categoria cate) {
 		this.nombre=nom;
@@ -191,4 +195,12 @@ public class Habitos {
 		hora=horaR;}
 	public void setCategoria(Categoria cateR) {
 		categoria=cateR;}
+
+
+public String toString() {
+	String a = "Categoría: " + categoria + "/nDescripción: " + descripcion;
+	return a;
 }
+}
+
+

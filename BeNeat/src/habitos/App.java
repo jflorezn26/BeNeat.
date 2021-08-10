@@ -2,10 +2,11 @@ package habitos;
 
 import java.util.Scanner;
 
-import org.edu.unal.pc.clases.Calendario;
-
 public class App {
     public static void main(String[] args) {
+    	
+    	
+    	
     	//Nota para que el codigo funcinone debe existir un archivo en excel con los dias del mas separados por cada casilla en este debe ir escrito el numero del dia
     	Scanner scan =new Scanner(System.in);
     	Calendario cal = new Calendario(); // instanciar la clase con los metodos

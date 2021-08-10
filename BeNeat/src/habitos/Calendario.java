@@ -12,7 +12,7 @@ public class Calendario {
 	private String partes[] = null;
 	private String[][] matrizago = new String[7][7];
 	private String[][] matrizexport = new String[7][7];
-	private String [][]habitosexit = new String [1000];
+	private String [][]habitosexit = new String [1000][];
 
 	public void leercsv(String nomarchivo) {
 		try {
