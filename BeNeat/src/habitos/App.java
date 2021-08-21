@@ -44,11 +44,11 @@ public class App {
        * PARA HACER DICHO METODO SE DEBE AYUDAR DEL METODO agregarhabi() PARA QUE EL HABITO SE GUARDE EN LSO RESPECTIVOS DIAS
        * 
        */
-    //  cal.agregarhabi(nump, me, yt);
+     cal.agregarhabi(nump, me, yt)
       /** EL METODO almacen AGREGA LOS HABITOS (tq) EN UN ARREGLO EL CUAL PASA A UN ARCHIVO ES CUAL ES LA BASE DE DATOS DE LOS HABITOS EXISTENTES
        * SOLO SE DEBE LLAMAR UNA VEZ POR CADA HABITO QUE SE DESEA AGREGAR.
        */
-     // cal.almacen(tq);
+     cal.almacen(tq);
 /** lOS ANTERIORES METODOS AGREGAN NUEVOS HABITOS EN LAS MATRIZ QUE TIENE TODOS LOS DIAS DEL AÑO Y EL ARREGLO QUE CONTIENE LOS HABITOS EXISTENTES
 
  */
@@ -91,9 +91,9 @@ System.out.println("¿DESEA VER LA GUIA O INFORMACION NUTRICIONAL Y ACTIVIDAD FI
      * SI EL USUARIO QUIERE ELIMINAR UN HABITO DE TODOS LOS DIAS QUE EL ESPECIFICO ANTERIORMENTE SE DEBE HACER ASI
      * leer-articulos-cientificos 2 horas COMO SE VA SE OMITEN LOS GUIONES BAJOS Y SE PONEN SON ESPACIOS
      */
-   // cal.mostrarhabs();
+   cal.mostrarhabs();
    
-  //  cal.eliminarhab(eh);
+   cal.eliminarhab(eh);
 System.out.println("¿DESEA VER LOS HABITOS DE UN DIA?");
 /** LLAMAR AL METODO mostraragendadia() */
 //cal.mostraragendadia(mot, dai);
@@ -123,10 +123,10 @@ System.out.println("¿DESEA AGREGAR PROGRESO EN UN HABITO?");
  * ESTE METODO EN LA MATRIZ DE LOS DIAS DEL AÑO CAMBIA EN EL DIA SE HABITO EL (Vigente) POR (Finalizado)
  * 
  */
-//cal.mostraragendadia(mot,dai);
-//cal.imprimirpre(ha);
+cal.mostraragendadia(mot,dai);
+cal.imprimirpre(ha);
 
-//cal.progress(mo ,da ,hto , rta);
+cal.progress(mo ,da ,hto , rta);
     /** ESTOS DOS METODOS SIEMPRE DEBEN IR AL FINAL DE LA APLICACION ESTOS SON LOS METODOS QUE PASAN LA INFORMACION QUE ACTUALIZAMOS ANTES Y LA ESCRIBEN EN EL ARCHIVO */
   cal.separarceldas();
   cal.Export();
