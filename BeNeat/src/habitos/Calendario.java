@@ -483,7 +483,7 @@ System.out.println("habito eliminado con exito");
 		 */
 		
 		String pre[] = ha.split(" ");
-		String prefin = "�Que cantidad de " + pre[2] + "(s) ha cumplido?";
+		String prefin = "¿Que cantidad de " + pre[2] + "(s) ha cumplido?";
 		return prefin;
 	}
 
@@ -524,30 +524,42 @@ System.out.println("habito eliminado con exito");
 	}
 
 	
-	public void repetirHabitos(int nump, int me, String yt, int a) {
-/*
- * Este m�todo es el que se utiliza para clonar los h�bitos
- * a lo largo de varias semanas si el usuario as� lo quiere.
- * Agrega copias de los h�bitos una semana adelante de la fecha
- * ingresada (7 d�as despu�s).
- * Requiere del m�todo setnuevodia() cuando los h�bitos se realizan a 
- * lo largo de varios meses.
- */
+	public void repetirHabitos(int nump, int me, String yt, int a, int g) {
+		/*
+		 * Este método es el que se utiliza para clonar los hábitos a lo largo de varias
+		 * semanas si el usuario así lo quiere. Agrega copias de los hábitos una semana
+		 * adelante de la fecha ingresada (7 días después). Requiere del método
+		 * setnuevodia() cuando los hábitos se realizan a lo largo de varios meses.
+		 */
 		for (int b = a - 1; b != 0; b--) {
 			try {
-				agregarhabi(nump + 7, me, yt);
-				nump += 7;
+				String[] verif = matrizago[me - 1][nump + g - 1].split(" ");
+				@SuppressWarnings("unused")
+				int c = Integer.parseInt(verif[0]);// esta variable se utiliza para verificar que los datos se añadan a
+													// las casillas correctas de la matriz. En caso de que no, lanzará
+													// un error para ejecutar un procedimiento diferente:).
+				agregarhabi(nump + g, me, yt);
+				// System.out.println(matrizago[me - 1][(nump+g )- 1]);
+				nump += g;
+
 			} catch (ArrayIndexOutOfBoundsException ea) {
 				try {
-					int d = nump + 7;
+					int d = nump + g;
 					nump = setnuevodia(d, me);
 					me++;
 					agregarhabi(nump, me, yt);
 
 				} catch (Exception n) {
 
-					System.out.println("Ha ocurrido un error al agregar el h�bito en repetici�n");
+					System.out.println("Ha ocurrido un error al agregar el hábito en repetición");
 				}
+			} catch (NumberFormatException n1) {
+
+				int d = nump + g;
+				nump = setnuevodia(d, me);
+				me++;
+				agregarhabi(nump, me, yt);
+
 			} catch (Exception e) {
 				System.out.println("error");
 
@@ -557,20 +569,20 @@ System.out.println("habito eliminado con exito");
 	}
 
 	public int setnuevodia(int a, int b) {
-		
+
 		/*
-		 * Este m�todo es necesario para el funcionamiento del m�todo repetirHabitos(). 
-		 * Es usado en caso de que el h�bito se realice a lor largo de varios meses.
-		 * Este m�todo nos garantiza que los h�bitos puedan ser duplicados en una fila
-		 * de la matriz matrizago diferente a la inicial, evitando as� excepciones 
-		 * producidas por sobrepasar el l�mite de posiciones en la matriz mencionada.
+		 * Este método es necesario para el funcionamiento del método repetirHabitos().
+		 * Es usado en caso de que el hábito se realice a lor largo de varios meses.
+		 * Este método nos garantiza que los hábitos puedan ser duplicados en una fila
+		 * de la matriz matrizago diferente a la inicial, evitando así excepciones
+		 * producidas por sobrepasar el límite de posiciones en la matriz mencionada.
 		 */
-		
+
 		int c = 0;
-		int d = (matrizago[b].length)-1;
+		int d = (matrizago[b].length) - 1;
 		while (c == 0) {
 			try {
-			String[] array = matrizago[b - 1][d].split(" "); 
+				String[] array = matrizago[b - 1][d].split(" ");
 				c = Integer.parseInt(array[0]);
 			} catch (Exception e) {
 				d--;
@@ -581,6 +593,68 @@ System.out.println("habito eliminado con exito");
 		return a;
 
 	}
+
+	public void mostraragendames(int a) {
+
+		String mes = null;
+		switch (a) {
+
+		case 1:
+			mes = "enero.";
+			break;
+		case 2:
+			mes = "febrero.";
+			break;
+		case 3:
+			mes = "marzo.";
+			break;
+		case 4:
+			mes = "abril.";
+			break;
+		case 5:
+			mes = "mayo.";
+			break;
+		case 6:
+			mes = "junio.";
+			break;
+		case 7:
+			mes = "julio.";
+			break;
+		case 8:
+			mes = "agosto.";
+			break;
+		case 9:
+			mes = "septiembre.";
+			break;
+		case 10:
+			mes = "octubre.";
+			break;
+		case 11:
+			mes = "noviembre.";
+			break;
+		case 12:
+			mes = "diciembre.";
+			break;
+		}
+
+		System.out.println("\nAgenda de " + mes + "");
+		for (int i = 1; i < matrizago[a].length + 1; i++) {
+			
+			if (!matrizago[a - 1][i - 1].equals(".")) {
+				System.out.println("\n" + i + ".\n");
+				if (matrizago[a - 1][i - 1].length() < 4) {
+					System.out.println("No hay nada programado para este día");
+				} else {
+					String sepdi[] = matrizago[a - 1][i - 1].split(" ");
+					for (int y = 1; y < sepdi.length; y++) {
+						System.out.println(sepdi[y] + "\n");
+					}
+				}
+			}
+		}
+	}
+	
+
 	public void importarnutricion(){
 		BufferedReader lectora;
 		String lineas;
