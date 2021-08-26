@@ -19,7 +19,7 @@ public class Calendario {
 	 * PODAMOS TRABAJAR EN ELLA linea Y lin QUE CORRESPONDEN TAMBIEN PARA LEER LA
 	 * INFORMACION DEL ARCHIVO partes UN ARREGLO TEMPORAL EN DONDE SE PASA LA
 	 * INFORMACION DE CADA LINEA DEL ARCHIVO Y SE PASA LUEGO A UNA FILA DE MATRIZ DE
-	 * LOS DIAS DEL AÑO parth ARREGLO EN DONDE QUDA LA INFORMACION FINAL QUE SE VA
+	 * LOS DIAS DEL Aï¿½O parth ARREGLO EN DONDE QUDA LA INFORMACION FINAL QUE SE VA
 	 * PASAR AL ARCHIVO DE LA BASE DE DATOS DE LOS HABITOS matrizago CORRESPONDE A
 	 * LA MATRIZ EN DONDE SE PASA LA INFORMACION DE TODOS LOS DIAS DEL AÃ‘O EN ESTA
 	 * MATRIZ SE GUARDAN TODOS LOS CAMBIOS QUE SE VAN A HACER PARA DESPUES PASARLOS
@@ -37,6 +37,9 @@ public class Calendario {
 	private String lin;
 	private String[][] matrizago = new String[12][31];
 	private String[][] matrizexport = new String[12][31];
+	private  String partnu [];
+  private  String [][] matriznutri = new String [68][2];
+  private  String partacfi [];
 	Fechas agenda = new Fechas();
 
 	public void leercsv() {
@@ -356,7 +359,7 @@ public class Calendario {
 		habi = null;
 		habi = newhabo;
 		newhabo = null;
-
+System.out.println("habito eliminado con exito");
 	}
 
 	public void eliminareventoespe(int k, int jk, String kp) {
@@ -480,7 +483,7 @@ public class Calendario {
 		 */
 		
 		String pre[] = ha.split(" ");
-		String prefin = "¿Que cantidad de " + pre[2] + "(s) ha cumplido?";
+		String prefin = "ï¿½Que cantidad de " + pre[2] + "(s) ha cumplido?";
 		return prefin;
 	}
 
@@ -523,11 +526,11 @@ public class Calendario {
 	
 	public void repetirHabitos(int nump, int me, String yt, int a) {
 /*
- * Este método es el que se utiliza para clonar los hábitos
- * a lo largo de varias semanas si el usuario así lo quiere.
- * Agrega copias de los hábitos una semana adelante de la fecha
- * ingresada (7 días después).
- * Requiere del método setnuevodia() cuando los hábitos se realizan a 
+ * Este mï¿½todo es el que se utiliza para clonar los hï¿½bitos
+ * a lo largo de varias semanas si el usuario asï¿½ lo quiere.
+ * Agrega copias de los hï¿½bitos una semana adelante de la fecha
+ * ingresada (7 dï¿½as despuï¿½s).
+ * Requiere del mï¿½todo setnuevodia() cuando los hï¿½bitos se realizan a 
  * lo largo de varios meses.
  */
 		for (int b = a - 1; b != 0; b--) {
@@ -543,7 +546,7 @@ public class Calendario {
 
 				} catch (Exception n) {
 
-					System.out.println("Ha ocurrido un error al agregar el hábito en repetición");
+					System.out.println("Ha ocurrido un error al agregar el hï¿½bito en repeticiï¿½n");
 				}
 			} catch (Exception e) {
 				System.out.println("error");
@@ -556,11 +559,11 @@ public class Calendario {
 	public int setnuevodia(int a, int b) {
 		
 		/*
-		 * Este método es necesario para el funcionamiento del método repetirHabitos(). 
-		 * Es usado en caso de que el hábito se realice a lor largo de varios meses.
-		 * Este método nos garantiza que los hábitos puedan ser duplicados en una fila
-		 * de la matriz matrizago diferente a la inicial, evitando así excepciones 
-		 * producidas por sobrepasar el límite de posiciones en la matriz mencionada.
+		 * Este mï¿½todo es necesario para el funcionamiento del mï¿½todo repetirHabitos(). 
+		 * Es usado en caso de que el hï¿½bito se realice a lor largo de varios meses.
+		 * Este mï¿½todo nos garantiza que los hï¿½bitos puedan ser duplicados en una fila
+		 * de la matriz matrizago diferente a la inicial, evitando asï¿½ excepciones 
+		 * producidas por sobrepasar el lï¿½mite de posiciones en la matriz mencionada.
 		 */
 		
 		int c = 0;
@@ -578,4 +581,57 @@ public class Calendario {
 		return a;
 
 	}
+	public void importarnutricion(){
+		BufferedReader lectora;
+		String lineas;
+		
+	   try {
+			   lectora = new BufferedReader(new FileReader("C:\\Users\\Carolina\\Documents\\informacion_nutricional.csv")); 
+			   int j = 0;                                             
+			   while ((lineas = lectora.readLine()) != null) {  
+					partnu = lineas.split(";");                  
+				   llenarnut(j); 
+				   j++;         
+			   }
+			   System.out.println();
+			   lectora.close();
+			   lineas = null;
+			   }catch(IOException e) {  
+				   System.out.println("Hay un error en: "+e); 
+		   }
+	  }
+	  public void llenarnut(int g){              
+		   for(int v =0; v<partnu.length;v++ ) {
+			   matriznutri[g][v]=partnu[v];
+			   }
+	   }
+	 public  void imprinutri(){
+	   for(int wp =0;wp<68;wp++){
+		 System.out.println(matriznutri[wp][0].concat(" ")+matriznutri[wp][1]);
+	   }
+	 }
+	  public  void importaractividadfisica(){
+		BufferedReader lecto;
+		String lins;
+	   try {
+			   lecto = new BufferedReader(new FileReader("C:\\Users\\Carolina\\Documents\\Informacion_actividad_Fisica.csv")); 
+												   
+			   while ((lins = lecto.readLine()) != null) {  
+					partacfi = lins.split(";");                  
+				   
+					 
+			   }
+			   System.out.println();
+			   lecto.close();
+			   lins = null;
+			   }catch(IOException e) {  
+				   System.out.println("Hay un error en: "+e); 
+		   }
+	  }
+	  public void impriactifis(){
+		for(int ps =0;ps<partacfi.length;ps++){
+		  System.out.println(partacfi[ps]);
+		}
+   
+	  }
 }
