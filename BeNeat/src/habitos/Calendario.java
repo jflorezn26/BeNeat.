@@ -320,7 +320,7 @@ public class Calendario {
 
 		
 		String neweh = eh.replace(" ", "_");
-		String camb = " " + neweh + "_(Vigente)";
+		String camb = " " + neweh+ "_(Vigente)";
 		String com = neweh + "_(Vigente)";
 		String cambal = " " + neweh + "_(Finalizado)";
 		String comal = neweh + "_(Finalizado)";
@@ -359,7 +359,7 @@ public class Calendario {
 		habi = null;
 		habi = newhabo;
 		newhabo = null;
-System.out.println("habito eliminado con exito");
+System.out.println("Revise su agenda. Si digitó con el formato adecuado, su hábito fue eliminado con éxito.");
 	}
 
 	public void eliminareventoespe(int k, int jk, String kp) {
@@ -660,7 +660,7 @@ System.out.println("habito eliminado con exito");
 		String lineas;
 		
 	   try {
-			   lectora = new BufferedReader(new FileReader("C:\\Users\\Carolina\\Documents\\informacion_nutricional.csv")); 
+			   lectora = new BufferedReader(new FileReader("Archivos\\informacion_nutricional.csv")); 
 			   int j = 0;                                             
 			   while ((lineas = lectora.readLine()) != null) {  
 					partnu = lineas.split(";");                  
@@ -681,14 +681,14 @@ System.out.println("habito eliminado con exito");
 	   }
 	 public  void imprinutri(){
 	   for(int wp =0;wp<68;wp++){
-		 System.out.println(matriznutri[wp][0].concat(" ")+matriznutri[wp][1]);
+		 System.out.println("\n"+matriznutri[wp][0].concat(" ")+matriznutri[wp][1]);
 	   }
 	 }
 	  public  void importaractividadfisica(){
 		BufferedReader lecto;
 		String lins;
 	   try {
-			   lecto = new BufferedReader(new FileReader("C:\\Users\\Carolina\\Documents\\Informacion_actividad_Fisica.csv")); 
+			   lecto = new BufferedReader(new FileReader("Archivos\\Informacion_actividad_Fisica.csv")); 
 												   
 			   while ((lins = lecto.readLine()) != null) {  
 					partacfi = lins.split(";");                  
@@ -704,7 +704,8 @@ System.out.println("habito eliminado con exito");
 	  }
 	  public void impriactifis(){
 		for(int ps =0;ps<partacfi.length;ps++){
-		  System.out.println(partacfi[ps]);
+			
+		  System.out.println("\n"+partacfi[ps]);
 		}
    
 	  }

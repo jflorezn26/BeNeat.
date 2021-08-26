@@ -1,7 +1,7 @@
 package habitos;
 
 import java.util.*;
- 
+
 /** EN CASO DE ERRORES COMUNICARSE CON JOSHUA */
 /**
  * IMPORTANTE CUANDO SE HABLE DEL NUMERO DEL MES SIEMPRE DEBE SER UNA VARIABLE O
@@ -32,120 +32,106 @@ public class App {
 	public static String direccion = new String();
 	static Scanner scan = new Scanner(System.in);
 	static Calendario cal = new Calendario();
-	
-	
-	public static void main(String[] args) {
-	
-		cal.leercsv();
-		/**
-		 * ESTE ES EL METODO QUE LEER Y PASA LA INFORMACION QUE ESTA EN LOS ARCHIVOS A
-		 * LAS RESPECTIVAS MATRICES Y ARREGLOS DEBE COLOCAR LA DIRECCION EN DONDE ESTA
-		 * EL ARCHIVO CON EL NOMBRE IMPORTANTE ESTAR EN FORMATO CSV
-		 */
-		
-		
-		
-        scan.close();
-		
-		/**
-		 * ESTOS DOS METODOS SIEMPRE DEBEN IR AL FINAL DE LA APLICACION ESTOS SON LOS
-		 * METODOS QUE PASAN LA INFORMACION QUE ACTUALIZAMOS ANTES Y LA ESCRIBEN EN EL
-		 * ARCHIVO
-		 */
-		cal.separarceldas();
-		cal.Export();
-		
-	}
-	
+
+
 	public static void agregarHabitos() {
-		System.out.println("Ingrese el día y el mes (número) que en el que desea agregar un hábito");
-		int nump = scan.nextInt(), me = scan.nextInt();
-		System.out.println("Ingrese el hábito.");
-		scan.nextLine();
-		String yt = scan.nextLine();
-		yt= yt.replace(" ", "-");
-		System.out.println("¿Cuál es su meta para este hábito? (Por ejemplo: si el hábito es leer, su meta puede ser 30 minutos. Debe ingresar un valor numérico como primera palabra obligatoriamente)");
-		if (scan.hasNextInt()) {
-		yt = yt + " " + scan.nextLine();
 		try {
-			cal.agregarhabi(nump, me, yt);
-		
-		System.out.println("¿Desea repetir el hábito? S para Sí/N para No.");
-		String v = scan.nextLine();
-		switch (v.toUpperCase()) {
+			System.out.println("Ingrese el día y el mes (número) que en el que desea agregar un hábito");
 
-		case "S":
-			System.out.println(
-					"Desea repetir el hábito (digite según el número de la opción):\n1. Diariamente\n2. Semanalmente\n3. Fijar periodo");
-			int a = scan.nextInt(), b = 0, x = 0;
-
-			switch (a) {
-			case 1:
-				b = 1;
-				System.out.println("Digite el número de dias durante las cuales quiere repetir el hábito.");
-				x = scan.nextInt();
-				break;
-			case 2:
-				b = 7;
-				System.out.println("Digite el número de semanas durante las cuales quiere repetir el hábito.");
-				x = scan.nextInt();
-				break;
-			case 3:
-				System.out.println("¿Cada cuántos días desea repetir su hábito?");
-				b = scan.nextInt();
-				System.out.println("Digite el número de repeticiones que desea realizar.");
-				x = scan.nextInt();
-				break;
-			default:
-				System.out.println(
-						"Ha digitado una opción inexistente. Por defecto,\nsu hábito se ha añadido sin repeticiones.");
-				break;
-			}
-			if (x > 0 && b > 0) {
-				cal.repetirHabitos(nump, me, yt, x, b);
-				System.out.println("Hábito añadido");
-			} else {
-				System.out.println(
-						"Ha digitado un carácter erróneo. Por defecto,\nsu hábito se ha añadido sin repeticiones.");
-			}
-			break;
-		case "N":
-			System.out.println("Hábito añadido");
-			break;
-		default:
-			System.out.println(
-					"Ha digitado un carácter erróneo. Por defecto,\nsu hábito se ha añadido sin repeticiones.");
-		}
-		/**
-		 * EL METODO agregarhabi AGREGA A UNA MATRIZ QUE TIENE 12 FILAS QUE CORRESPONDEN
-		 * A LOS 12 MESES DE AÃ‘O Y TIENE 31 COLUMNAS CORRESPONDIENTES A LOS DIAS DEL
-		 * AÃ‘O EL METODO agregarhabi RECIBE TRES ARGUMENTO LOS DOS PRIMERO SON TIPO int
-		 * LOS CUALES CORRESPONDEN A EL (nump)DIA Y EL MES(me) EN EL CUAL SE DESEA
-		 * AGREGAR EL HABITO Y EL TERCERO CORRESPONE AL HABITO (yt) EN EL FORMATO QUE SE
-		 * ESPECIFICO ARRIBA FALTA EL METODO QUE SEGUN COMO QUIERA EL USUARIO AGREGUE
-		 * LOS HABITOS CADA 7 DIAS, TODOS LOS DIAS O COMO LO ESPECIFIQUE EL USUARIO PARA
-		 * HACER DICHO METODO SE DEBE AYUDAR DEL METODO agregarhabi() PARA QUE EL HABITO
-		 * SE GUARDE EN LSO RESPECTIVOS DIAS
-		 * 
-		 */
-
-		/**
-		 * EL METODO almacen AGREGA LOS HABITOS (tq) EN UN ARREGLO EL CUAL PASA A UN
-		 * ARCHIVO ES CUAL ES LA BASE DE DATOS DE LOS HABITOS EXISTENTES SOLO SE DEBE
-		 * LLAMAR UNA VEZ POR CADA HABITO QUE SE DESEA AGREGAR.
-		 */
-		scan.nextLine();
-		cal.almacen(yt);
-		} catch (ArrayIndexOutOfBoundsException e) {
-			
-			System.out.println("Ha digitado un valor de día o de mes inválido. Por favor, inténtelo nuevamente");
-			
-		}catch (Exception e1) {
-			System.out.println("Ha ocurrido un error durante a ejecución. Por favor, inténtelo nuevamente");
-		}
-		}else {
+			int nump = scan.nextInt(), me = scan.nextInt();
+			System.out.println("Ingrese el hábito.");
 			scan.nextLine();
-			System.out.println("No ha digitado según las intrucciones indicadas. Por favor, inténtelo nuevamente");
+			String yt = scan.nextLine();
+			yt = yt.replace(" ", "-");
+			System.out.println(
+					"¿Cuál es su meta para este hábito? (Por ejemplo: si el hábito es leer, su meta puede ser 30 minutos. Debe ingresar un valor numérico como primera palabra obligatoriamente)");
+			if (scan.hasNextInt()) {
+				yt = yt + " " + scan.nextLine();
+				try {
+					cal.agregarhabi(nump, me, yt);
+
+					System.out.println("¿Desea repetir el hábito? S para Sí/N para No.");
+					String v = scan.nextLine();
+					switch (v.toUpperCase()) {
+
+					case "S":
+						System.out.println(
+								"Desea repetir el hábito (digite según el número de la opción):\n1. Diariamente\n2. Semanalmente\n3. Fijar periodo");
+						int a = scan.nextInt(), b = 0, x = 0;
+
+						switch (a) {
+						case 1:
+							b = 1;
+							System.out.println("Digite el número de dias durante las cuales quiere repetir el hábito.");
+							x = scan.nextInt();
+							break;
+						case 2:
+							b = 7;
+							System.out.println(
+									"Digite el número de semanas durante las cuales quiere repetir el hábito.");
+							x = scan.nextInt();
+							break;
+						case 3:
+							System.out.println("¿Cada cuántos días desea repetir su hábito?");
+							b = scan.nextInt();
+							System.out.println("Digite el número de repeticiones que desea realizar.");
+							x = scan.nextInt();
+							break;
+						default:
+							System.out.println(
+									"Ha digitado una opción inexistente. Por defecto,\nsu hábito se ha añadido sin repeticiones.");
+							break;
+						}
+						if (x > 0 && b > 0) {
+							cal.repetirHabitos(nump, me, yt, x, b);
+							System.out.println("Hábito añadido");
+						} else {
+							System.out.println(
+									"Ha digitado un carácter erróneo. Por defecto,\nsu hábito se ha añadido sin repeticiones.");
+						}
+						break;
+					case "N":
+						System.out.println("Hábito añadido");
+						break;
+					default:
+						System.out.println(
+								"Ha digitado un carácter erróneo. Por defecto,\nsu hábito se ha añadido sin repeticiones.");
+					}
+					/**
+					 * EL METODO agregarhabi AGREGA A UNA MATRIZ QUE TIENE 12 FILAS QUE CORRESPONDEN
+					 * A LOS 12 MESES DE AÃ‘O Y TIENE 31 COLUMNAS CORRESPONDIENTES A LOS DIAS DEL
+					 * AÃ‘O EL METODO agregarhabi RECIBE TRES ARGUMENTO LOS DOS PRIMERO SON TIPO int
+					 * LOS CUALES CORRESPONDEN A EL (nump)DIA Y EL MES(me) EN EL CUAL SE DESEA
+					 * AGREGAR EL HABITO Y EL TERCERO CORRESPONE AL HABITO (yt) EN EL FORMATO QUE SE
+					 * ESPECIFICO ARRIBA FALTA EL METODO QUE SEGUN COMO QUIERA EL USUARIO AGREGUE
+					 * LOS HABITOS CADA 7 DIAS, TODOS LOS DIAS O COMO LO ESPECIFIQUE EL USUARIO PARA
+					 * HACER DICHO METODO SE DEBE AYUDAR DEL METODO agregarhabi() PARA QUE EL HABITO
+					 * SE GUARDE EN LSO RESPECTIVOS DIAS
+					 * 
+					 */
+
+					/**
+					 * EL METODO almacen AGREGA LOS HABITOS (tq) EN UN ARREGLO EL CUAL PASA A UN
+					 * ARCHIVO ES CUAL ES LA BASE DE DATOS DE LOS HABITOS EXISTENTES SOLO SE DEBE
+					 * LLAMAR UNA VEZ POR CADA HABITO QUE SE DESEA AGREGAR.
+					 */
+					scan.nextLine();
+					cal.almacen(yt);
+				} catch (ArrayIndexOutOfBoundsException e) {
+
+					System.out
+							.println("Ha digitado un valor de día o de mes inválido. Por favor, inténtelo nuevamente");
+
+				} catch (Exception e1) {
+					System.out.println("Ha ocurrido un error durante a ejecución. Por favor, inténtelo nuevamente");
+				}
+			} else {
+				scan.nextLine();
+				System.out.println("No ha digitado según las intrucciones indicadas. Por favor, inténtelo nuevamente");
+			}
+		} catch (Exception e) {
+			scan.nextLine();
+			System.out.println("Ha digitado un valor inválido. Por favor, inténtelo nuevamente");
 		}
 
 		/**
@@ -155,50 +141,59 @@ public class App {
 		 */
 
 	}
-	
+
 	public static void menu() {
-		
-		agregarHabitos();//M�todo para agregar h�bitos
+
+		agregarHabitos();// M�todo para agregar h�bitos
 		verGuiaNutricional();
-		verAgendaDia();//M�todo para ver los h�bitos de un d�a espec�fico
-		verAgendaMes();//M�todo para ver agenda de un mes espec�fico
-		eliminarEventoEspecifico();//M�todo para eliminar un h�bito en un d�a espec�fico
-		eliminarHabito();//M�todo para eliminar un h�bito completamente
-		
+		verAgendaDia();// M�todo para ver los h�bitos de un d�a espec�fico
+		verAgendaMes();// M�todo para ver agenda de un mes espec�fico
+		eliminarEventoEspecifico();// M�todo para eliminar un h�bito en un d�a espec�fico
+		eliminarHabito();// M�todo para eliminar un h�bito completamente
+
 	}
-	
+
 	public static void verGuiaNutricional() {
+
 		
+
 		System.out.println("¿DESEA VER LA GUIA DE INFORMACION NUTRICIONAL Y ACTIVIDAD FISICA");
-		System.out.println("Ingrese 1) si desea ver la informacion nutricional 2)si desea ver la informacion de actividad fisica");
+		System.out.println(
+				"Ingrese 1) si desea ver la informacion nutricional 2)si desea ver la informacion de actividad fisica");
 		int nnac = scan.nextInt();
-		if(nnac<=2 && nnac>=1){
-			if(nnac ==1){
+		if (nnac <= 2 && nnac >= 1) {
+			if (nnac == 1) {
 				cal.importarnutricion();
 				cal.imprinutri();
-			}else{
+			} else {
 				cal.importaractividadfisica();
 				cal.impriactifis();
 			}
-		}else{
+			System.out.println("\nInformación obtenida de:\nNutrición: https://www.icbf.gov.co/system/files/guias_alimentarias_basadas_en_alimentos_para_la_poblacion_colombiana_mayor_de_2_anos_0.pdf\nActividad física: https://www.fiatc.es/blog/post/ejercicios-aerobicos-beneficios");
+		} else {
 			System.out.println("El numero ingresado no es valido");
 		}
-		
+
 	}
 
 	public static void añadirProgreso() {
-		
+
 		System.out.println("¿DESEA AGREGAR PROGRESO EN UN HABITO?");
 		System.out.println("Ingrese el numero del mes en el cual desea agregar un progreso");
 		int nmesap = scan.nextInt();
 		System.out.println("Ingrese el numero del dia en el cual desea agregar un progreso");
-		int ndiaap=scan.nextInt();
-		cal.mostraragendadia(nmesap,ndiaap);
+		int ndiaap = scan.nextInt();
+
+		cal.mostraragendadia(nmesap, ndiaap);
 		System.out.println("Ingrese el habito que desea agregar un progreso");
-		System.out.println("IMPORTANTE ingrese el habito con el formato presentado anteriormente \nUsted observara los habitos de este forma leer_2_horas_(Vigente) \nrecuerde que aunque vea los habitos con un guion_ y (Vigente) no debe ingresar el (Vigente)\n Ingrese el habito con espacios en los lugares en donde hay un guion bajo_");
+		System.out.println(
+				"IMPORTANTE ingrese el habito con el formato presentado anteriormente \nUsted observara los habitos de este forma leer_2_horas_(Vigente) \nrecuerde que aunque vea los habitos con un guion_ y (Vigente) no debe ingresar el (Vigente)\n Ingrese el habito con espacios en los lugares en donde hay un guion bajo_");
+
+		scan.nextLine();
 		String habpro = scan.nextLine();
-		cal.imprimirpre(habpro);
+		System.out.println(cal.imprimirpre(habpro));
 		int nrta = scan.nextInt();
+		scan.nextLine();
 		cal.progress(nmesap, ndiaap, habpro, nrta);
 		/**
 		 * PARA REGISTRAR EL PROGRESO DE UN HABITO PRIMERO SE DEBE MOSTRAR LOS HABITOS
@@ -207,28 +202,29 @@ public class App {
 		 * ARGUMENTO String QUE ES EL HABITO AL QUE SE LE QUIERE AGREGAR PROGESO LO QUE
 		 * IMPRIME ES UNA PREGUNTA DEPENDIENDO CADA HABITO EJEMPLO SI EL USUARIO
 		 * INTRODUJO leer-articulos-cientificos 2 horas LA FUNCION imprimirpre()
-		 * IMPRIMER LA PREGUNTA ASI "¿Que cantidad de "+pre[2]+"(s) ha cumplido?"
-		 * pre[2] en este casi es horas entonces seria "¿Que cantidad de horas(s) ha
-		 * cumplido?" DESPUES DE ESTA PREGUNTA EL USUARIO DEBE INTRODUCIR EN UNA
-		 * VARIABLE TIPO int EL NUMERO EN ESTE CASO DE HORAS QUE HA LEIDO EL METODO
-		 * progress() RECIBE 4 ARGUMENTOS PRIMERO ES EL MES EL SEGUNDO EL DIA (TIPO int)
-		 * EL TERCERO ES EL HABITO Y EL CUARTO ES EL NUMERO EN ESTE EJEMPLO DE HORAS
-		 * ESTE METODO EN LA MATRIZ DE LOS DIAS DEL AÑO CAMBIA EN EL DIA SE HABITO EL
-		 * (Vigente) POR (Finalizado)
+		 * IMPRIMER LA PREGUNTA ASI "¿Que cantidad de "+pre[2]+"(s) ha cumplido?" pre[2]
+		 * en este casi es horas entonces seria "¿Que cantidad de horas(s) ha cumplido?"
+		 * DESPUES DE ESTA PREGUNTA EL USUARIO DEBE INTRODUCIR EN UNA VARIABLE TIPO int
+		 * EL NUMERO EN ESTE CASO DE HORAS QUE HA LEIDO EL METODO progress() RECIBE 4
+		 * ARGUMENTOS PRIMERO ES EL MES EL SEGUNDO EL DIA (TIPO int) EL TERCERO ES EL
+		 * HABITO Y EL CUARTO ES EL NUMERO EN ESTE EJEMPLO DE HORAS ESTE METODO EN LA
+		 * MATRIZ DE LOS DIAS DEL AÑO CAMBIA EN EL DIA SE HABITO EL (Vigente) POR
+		 * (Finalizado)
 		 * 
 		 */
-       
-         
+
 	}
 
 	public static void eliminarHabito() {
-		
+
 		System.out.println("¿DESEA ELIMINAR UN HABITO POR COMPLETO?");
 		cal.mostrarhabs();
 		System.out.println("¿Que habito desea eliminar por completo?");
-		System.out.println("IMPORTANTE ingrese el habito con el formato presentado anteriormente \nUsted observara los habitos de este forma leer_2_horas_(Vigente) \nrecuerde que aunque vea los habitos con un guion_ y (Vigente) no debe ingresar el (Vigente)\n Ingrese el habito con espacios en los lugares en donde hay un guion bajo_");
-String habelper = scan.nextLine();
-cal.eliminarhab(habelper);
+		System.out.println(
+				"IMPORTANTE ingrese el habito con el formato presentado anteriormente \nUsted observara los habitos de este forma leer_2_horas_(Vigente) \nrecuerde que aunque vea los habitos con un guion_ y (Vigente) no debe ingresar el (Vigente)\n Ingrese el habito con espacios en los lugares en donde hay un guion bajo_");
+		System.out.println("Si no ingresa los datos en el formato indicado, su hábito no será eliminado.");
+		String habelper = scan.nextLine();
+		cal.eliminarhab(habelper);
 		/**
 		 * PARA ELIMINAR UN HABITO POR COMPLETO ES DECIR QUE ELIMINA EL HABITO DE TODOS
 		 * LOS DIAS QUE ESTE REGISTRADO EN EL CALENDARIO SE LLAMA SIEMPRE PRIMERO AL
@@ -240,13 +236,12 @@ cal.eliminarhab(habelper);
 		 * leer-articulos-cientificos_2_horas cantar_1_hora jugar-football_3_horas COMO
 		 * SE VE AQUI NO APARECE (Vigente) NI (Finalizado) YA QUE EL METODO SACA LA
 		 * INFORMACION DE UN ARREGLO DISTINTO A LA MATRIZ QUE TIENE TODOS LO DIAS DEL
-		 * AÑO Y AQUI NO SE NECESITA SABER QUE HABITOSESTAN VIGENTES O FINALIZADOS SI
-		 * EL USUARIO QUIERE ELIMINAR UN HABITO DE TODOS LOS DIAS QUE EL ESPECIFICO
+		 * AÑO Y AQUI NO SE NECESITA SABER QUE HABITOSESTAN VIGENTES O FINALIZADOS SI EL
+		 * USUARIO QUIERE ELIMINAR UN HABITO DE TODOS LOS DIAS QUE EL ESPECIFICO
 		 * ANTERIORMENTE SE DEBE HACER ASI leer-articulos-cientificos 2 horas COMO SE VA
 		 * SE OMITEN LOS GUIONES BAJOS Y SE PONEN SON ESPACIOS
 		 */
-		
-		
+
 	}
 
 	public static void verAgendaDia() {
@@ -310,17 +305,20 @@ cal.eliminarhab(habelper);
 	}
 
 	public static void eliminarEventoEspecifico() {
-		
+
 		System.out.println("¿DESEA ELIMINAR UN HABITO EN UN DIA ESPECIFICO ?");
 		System.out.println("Ingrese el numero del mes que desea eliminar un habito");
 		int nmeseles = scan.nextInt();
 		System.out.println("Ingrese el numero del dia que desea eliminar un habito");
 		int ndiaeles = scan.nextInt();
+		scan.nextLine();
 		cal.mostraragendadia(nmeseles, ndiaeles);
 		System.out.println("Ingrese el habito del dia que desea eliminar");
-		System.out.println("IMPORTANTE ingrese el habito con el formato presentado anteriormente \nUsted observara los habitos de este forma leer_2_horas_(Vigente) \nrecuerde que aunque vea los habitos con un guion_ y (Vigente) no debe ingresar el (Vigente)\n Ingrese el habito con espacios en los lugares en donde hay un guion bajo_");
+		System.out.println(
+				"IMPORTANTE ingrese el habito con el formato presentado anteriormente \nUsted observara los habitos de este forma leer_2_horas_(Vigente) \nrecuerde que aunque vea los habitos con un guion_ y (Vigente) no debe ingresar el (Vigente)\n Ingrese el habito con espacios en los lugares en donde hay un guion bajo_");
 		String habeles = scan.nextLine();
 		cal.eliminareventoespe(nmeseles, ndiaeles, habeles);
+		System.out.println("Revise su agenda. Si digitó con el formato adecuado, su hábito fue eliminado con éxito.");
 		/**
 		 * IMPORTANTE ANTES DE ELIMINAR UN HABITO EN UN DIA ESPECIFICO PRIMERO SIEMPRE
 		 * SE VA LLAMAR AL METODO mostraragendadia() RECIBE DOS ARGUMENTOS EL PRIMERO
@@ -343,14 +341,7 @@ cal.eliminarhab(habelper);
 		 * Y DIA DEBEN SER int O GENERARA ERROR
 		 * 
 		 */
-		
-		
-		
+
 	}
 
-
-
-
 }
-
-
